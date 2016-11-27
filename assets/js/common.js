@@ -29,7 +29,7 @@
             var h = (wh-oh)/2+dt;
             var czi = $(this).css('z-index') ? $(this).css('z-index') : 0;
             $img = $("<img>");
-            $img.attr('src','/style/img/loading.gif');
+            $img.attr('src','/assets/images/common/loading.gif');
             $img.css({'position':"relative",'left':w,'top':h,'z-index':czi+1});
             $(this).append($img);
             return false;
@@ -195,40 +195,40 @@
     //##############功能方法##############
     $.common = {      	
     	init:function(){//全局脚本初始化
-    		//radio
-            $('.html-radio').bind('click',function(){
-                var radioName = $(this).attr('data-name');
-                var radioId = $(this).attr('data-id');
-                $("input[name='"+radioName+"']").prop("checked",false);
-                $("#"+radioId).prop("checked",true);            
-            })
-            //tags
-            $('.html-tags').bind('click',function(){
-                var tagsName = $(this).attr('data-name');
-                var tagsId = $(this).attr('id');
-                var tagsValue = $(this).attr('data-value');
-                $("a[data-name='"+tagsName+"']").removeClass("checked");
-                $("#"+tagsId).addClass("checked");
-                $("input[name='"+tagsName+"']").val(tagsValue);
-            })
-            //img
-            $("img").error(function(){
-                $(this).attr('src','/style/img/notfind.jpg');
-            });
-            //report
-            $('.report').unbind('click').bind('click',function(){                
-                $('#reportCover').remove();$('.report-win').remove();
-                var dataId = $(this).attr('data-id');
-                var dataType = $(this).attr('data-type');
-                var zindex = 1;
-                var coverObj = cover.init({'id':'reportCover','z-index':zindex});
-                coverObj.show();
-                $.post("/util/common/report",{'dataId':dataId,'dataType':dataType},function(dt){
-                    $(dt).center({'z-index':(zindex+1),'y':-50,'height':200,'width':400}).appendTo('body');
-                })
-                $.common.onmousewheel(false);
-                return false;
-            })
+    		// //radio
+      //       $('.html-radio').bind('click',function(){
+      //           var radioName = $(this).attr('data-name');
+      //           var radioId = $(this).attr('data-id');
+      //           $("input[name='"+radioName+"']").prop("checked",false);
+      //           $("#"+radioId).prop("checked",true);            
+      //       })
+      //       //tags
+      //       $('.html-tags').bind('click',function(){
+      //           var tagsName = $(this).attr('data-name');
+      //           var tagsId = $(this).attr('id');
+      //           var tagsValue = $(this).attr('data-value');
+      //           $("a[data-name='"+tagsName+"']").removeClass("checked");
+      //           $("#"+tagsId).addClass("checked");
+      //           $("input[name='"+tagsName+"']").val(tagsValue);
+      //       })
+      //       //img
+      //       $("img").error(function(){
+      //           $(this).attr('src','/assets/images/common/notfind.jpg');
+      //       });
+      //       //report
+      //       $('.report').unbind('click').bind('click',function(){                
+      //           $('#reportCover').remove();$('.report-win').remove();
+      //           var dataId = $(this).attr('data-id');
+      //           var dataType = $(this).attr('data-type');
+      //           var zindex = 1;
+      //           var coverObj = cover.init({'id':'reportCover','z-index':zindex});
+      //           coverObj.show();
+      //           $.post("/util/common/report",{'dataId':dataId,'dataType':dataType},function(dt){
+      //               $(dt).center({'z-index':(zindex+1),'y':-50,'height':200,'width':400}).appendTo('body');
+      //           })
+      //           $.common.onmousewheel(false);
+      //           return false;
+      //       })
     	},
         isdate:function(val,format){//验证日期
             var format = format ? format : '-';
@@ -496,7 +496,7 @@ var loading = {
         var w = (ww-ow)/2+dl;
         var h = (wh-oh)/2+dt-50;
         this.img = $("<img>");
-        this.img.attr({'src':'/style/img/loading.gif','id':obj['id']+'_img'});
+        this.img.attr({'src':'/assets/images/common/loading.gif','id':obj['id']+'_img'});
         this.img.css({'position':"absolute",'left':w,'top':h,'zIndex':czi+1});
         return this;            
     },

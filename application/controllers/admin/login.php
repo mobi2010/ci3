@@ -19,13 +19,12 @@ class Login extends Admin_Controller {
 	public function checked(){
 		$uname = mobi_string_filter($_POST['uname']);
 		$upwd = mobi_string_filter($_POST['upwd']);		
-		if($uname == 'admin' && $upwd == 'admin@mobi2010'){			
+		if($uname == 'admin' && $upwd == 'admin@ci3'){			
 			$_SESSION['logined'] = true;
-			$res['code'] = 200;
-			$this->printer($res);
+			$this->cResponse($res);
 		}
 		$res['code'] = 400;
 		$res['msg'] = 'Account or Password is error';
-		$this->printer($res);
+		$this->cResponse($res);
 	}
 }

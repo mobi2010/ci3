@@ -16,10 +16,10 @@ $this->load->view('admin/footer');
 			if(!upwd){alert('Password not null');return;}
 
 			$.post('<?=base_url("admin/login/checked");?>',{'uname':uname,'upwd':upwd},function(dt){
-				if(dt['code'] == 200){
-					$.mobi.location('<?=base_url("admin/index");?>');
+				if(dt['code'] == 0){
+					$.common.location('<?=base_url("admin/index");?>');
 				}else{
-					alert(dt.msg);
+					alert(dt.message);
 				}
 			})
 			
