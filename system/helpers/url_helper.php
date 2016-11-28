@@ -624,12 +624,12 @@ if ( ! function_exists('wbsina_expandurl')){
 }
 
 /**
- * [mobi_query_string description]
+ * [ci3_query_string description]
  * @param  array  $unset [description]
  * @return [type]        [description]
  */
-if ( ! function_exists('mobi_query_string')){
-	function mobi_query_string($unset=array(),$query=array()){
+if ( ! function_exists('ci3_query_string')){
+	function ci3_query_string($unset=array(),$query=array()){
 		$queryStirng = array();		
 		foreach ($_GET as $key => $value) {
 			if(isset($value) && !in_array($key, $unset)){
@@ -641,22 +641,22 @@ if ( ! function_exists('mobi_query_string')){
 	}
 }
 /**
- * [mobi_query_url description]
+ * [ci3_query_url description]
  * @return [type] [description]
  */
-if ( ! function_exists('mobi_query_url')){
-	function mobi_query_url($url,$unset=array(),$query=array()){		
-		$queryStirng = mobi_query_string($unset,$query);
+if ( ! function_exists('ci3_query_url')){
+	function ci3_query_url($url,$unset=array(),$query=array()){		
+		$queryStirng = ci3_query_string($unset,$query);
 		$url = base_url($url)."?".$queryStirng;
 		return $url; 
 	}
 }
 /**
- * [mobi_url description]
+ * [ci3_url description]
  * @return [type] [description]
  */
-if ( ! function_exists('mobi_url')){
-	function mobi_url($url,$query=array(),$unset=array()){
+if ( ! function_exists('ci3_url')){
+	function ci3_url($url,$query=array(),$unset=array()){
 		$url = base_url($url);
 		$queryStirng = array();
 		if(!empty($query)){
@@ -671,11 +671,11 @@ if ( ! function_exists('mobi_url')){
 	}
 }
 /**
- * [mobi_format_url description]
+ * [ci3_format_url description]
  * @return [type] [description]
  */
-if ( ! function_exists('mobi_format_url')){
-	function mobi_format_url($url){
+if ( ! function_exists('ci3_format_url')){
+	function ci3_format_url($url){
 		if(preg_match("/^(http|https)\:\/\/(.*?)/is", $url)){
 			return $url;
 		}else{
