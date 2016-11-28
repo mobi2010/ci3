@@ -13,7 +13,7 @@ class Login extends Admin_Controller {
 		$this->load->view('admin/login');
 	}
 	/**
-	 * [验证]
+	 * 验证
 	 * @return [type] [description]
 	 */
 	public function checked(){
@@ -26,5 +26,25 @@ class Login extends Admin_Controller {
 		$res['code'] = 400;
 		$res['msg'] = 'Account or Password is error';
 		$this->cResponse($res);
+	}
+
+	function test2(){
+		$this->load->view('admin/test2');
+	}
+
+	function test(){
+		$this->load->view('admin/test');
+	}
+
+	function test3(){
+		$this->load->view('admin/test3');
+	}
+	/**
+	 * 登出
+	 * @return [type] [description]
+	 */
+	public function logout(){
+		unset($_SESSION['logined']);
+		redirect('admin/login');
 	}
 }

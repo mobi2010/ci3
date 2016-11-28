@@ -16,14 +16,14 @@ class Video extends Admin_Controller {
 	 * [add description]
 	 * @return [type] [description]
 	 */
-	function add(){
+	public function add(){
 		$this->load->view('admin/video/add',$data);
 	}
 	/**
-	 * [delete description]
+	 * [list description]
 	 * @return [type] [description]
 	 */
-	function delete(){
+	public function clist(){
 		$this->load->view('admin/video/list',$data);
 	}
 	
