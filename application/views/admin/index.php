@@ -1,32 +1,117 @@
-﻿<?php 
-    $this->load->view('admin/header');
-?>
-<body class="fixed-sidebar full-height-layout gray-bg" style="overflow:hidden">
-    <div id="wrapper">
-        <?php 
-        echo $menuView;
-        ?>
-        <!--右侧部分开始-->
-        <div id="page-wrapper" class="gray-bg dashbard-1">
-            <div class="row border-bottom">
-                <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
-                    
-                    <ul class="nav navbar-top-links navbar-right">
-                        <li class="dropdown">
-                            <a href="<?=base_url('admin/login/logout')?>">
-                            登出
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
+﻿<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-param" content="_csrf">
+    <meta name="csrf-token" content="YS5URjVaUlVQfnlrTww3DDADOTxiP2tnBHYYLHYwOgUjHGEqUyokZA==">
+    <title>CMS</title>
+    <link href="/assets/admin/css/bootstrap.css" rel="stylesheet">
+    <link href="/assets/admin/css/site.css" rel="stylesheet">
+</head>
+<body style="margin: 0px; padding-top: 51px;" scroll="no">
+    <nav id="w0" class="navbar-inverse navbar-fixed-top navbar" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#w0-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="">CMS</a>
             </div>
-            <div class="row J_mainContent" id="content-main">
-                <iframe id="J_iframe" width="100%" height="100%" src="<?=base_url('admin/index/welcome')?>" frameborder="0"  seamless></iframe>
+            <div id="w0-collapse" class="collapse navbar-collapse">
+                <ul id="w1" class="navbar-nav navbar-right nav">
+                    <?php 
+                        $submenuData = $menuData[$index];
+                        foreach ($menuData as $key => $value) {
+                            echo $key == $index ? '<li class="active">' : '<li>';
+                            echo '<a href="'.ci3_url('admin/index/index',['i'=>$key]).'">'.$value['title'].'</a></li>';
+                        }
+
+                    ?>
+                    <li>
+                        <form action="<?=base_url('admin/login/logout')?>" method="post">
+                        <input type="hidden" name="_csrf" value="TkRjZG0xNE0ALDAiHBxcGCsuJTs9QAJ7FHMzETllBBorI1EjIVlWAw=="><button type="submit" class="btn btn-link">Logout (admin)</button>
+                        </form>
+                    </li>
+                </ul>
             </div>
         </div>
-<!--右侧部分结束-->
-</div>      
-</body>  
-<?php 
-    $this->load->view('admin/footer');
-?>
+    </nav>
+    
+    <table id="containerTable" class="table border" style="height: 95%; padding: 0px; margin: 0px;">
+        <tr>
+            <td class="leftMenu" style="vertical-align: top; pading: 0px; margin: 0px;width:160px;background: whiteSmoke;vertical-align: top;">
+                <?php 
+                    foreach ($submenuData['sub'] as $key => $value) {
+                        echo '<div class="tbox">';
+                        echo '<div class="hd">';
+                        echo '<h3><a>'.$value['title'].'</a></h3>';
+                        echo '</div>';
+                        echo '<div class="bd">';
+                        echo '<ul>';
+                        foreach ($value['sub'] as $key2 => $value2) {
+                            echo '<li><a href="'.base_url($value2['uri']).'" target="mainFrame">'.$value2['title'].'</a></li>';
+                        }
+                        echo '</ul>';
+                        echo '</div>';
+                        echo '</div>';
+                    }
+
+                ?>
+                
+            </td>
+            <td class="mainContent" style="vertical-align: top; padding: 0px; margin: 0px;">
+                <iframe  id="mainFrame" name="mainFrame" width="100%" frameborder="0" scrolling="yes" 
+                    src="<?=base_url('admin/index/welcome')?>" onLoad="iFrameHeight()"></iframe>
+ 
+            </td>
+        </tr>
+    </table>
+    
+    <script src="/assets/admin/js/jquery.js"></script>
+<script src="/assets/admin/js/yii.js"></script>
+<script src="/assets/admin/js/bootstrap.js"></script></body>
+</html>
+<script type="text/javascript" language="javascript">
+function iFrameHeight() 
+{
+    var contentHeight = document.body.scrollHeight-70;
+    
+//  console.log(contentHeight);
+    
+    var ifm= document.getElementById("mainFrame");
+    ifm.height = contentHeight;
+}
+$(function(){
+    $('.navbar-brand').css("marginLeft", "-80px");
+
+
+    //平台、设备和操作系统  
+    var system ={  
+        win : false,  
+        mac : false,  
+        xll : false  
+    };  
+    //检测平台  
+    var p = navigator.platform;    
+      
+    /**var sUserAgent = navigator.userAgent.toLowerCase(); 
+    alert(sUserAgent);*/  
+      
+    system.win = p.indexOf("Win") == 0;  
+    system.mac = p.indexOf("Mac") == 0;  
+    system.x11 = (p == "X11") || (p.indexOf("Linux") == 0);  
+    //跳转语句  
+    if(system.win||system.mac||system.xll){//转向后台登陆页面  
+         
+    }else{  
+        //修改手机样式
+        $('nav').height(40);
+        $('#w0-collapse').height(40); 
+        $('#w0 .container .navbar-brand').remove();
+        $('#w1 li').css({ "height":"40px;", "width":"8%", "overflow":"hidden" });
+        $('#w1 li a').css({ "height":"10px;", "overflow":"hidden" });
+    } 
+});
+</script>

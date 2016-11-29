@@ -14,8 +14,8 @@ class Index extends Admin_Controller {
 	 */
 	public function index()
 	{	
+		$data['index'] = $_GET['i'] ? $_GET['i'] : 'index';
 		$data['menuData'] = require(APPPATH.'/config/admin_menu.php');
-		$data['menuView'] = $this->load->view('/admin/menu',$data,true);
 
 		$this->load->view('/admin/index',$data);
 	}

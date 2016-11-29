@@ -1,53 +1,48 @@
+
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en-US">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-
-    <title>登录</title>
-    <meta name="keywords" content="">
-    <meta name="description" content="">
-    <link href="/assets/admin/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/assets/admin/css/font-awesome.css?v=4.4.0" rel="stylesheet">
-    <link href="/assets/admin/css/animate.css" rel="stylesheet">
-    <link href="/assets/admin/css/style.css" rel="stylesheet">
-    <link href="/assets/admin/css/login.css" rel="stylesheet">
-    <script src="/assets/js/jquery-1.10.2.min.js"></script>
-    <script src="/assets/js/common.js"></script>
-    <!--[if lt IE 9]>
-    <meta http-equiv="refresh" content="0;ie.html" />
-    <![endif]-->
-    <script>
-        if (window.top !== window.self) {
-            window.top.location = window.location;
-        }
-    </script>
-
-</head>
-
-<body class="signin">
-    <div class="signinpanel">
-        <div class="row">
-            <div class="col-sm-12">
-                <h4 class="no-margins">登录：</h4>
-                <p class="m-t-md">登录到H+后台主题UI框架</p>
-                <input type="text" id="uname" class="form-control uname" placeholder="用户名" />
-                <input type="password" id="upwd" class="form-control pword m-b" placeholder="密码" />
-                <a href="">忘记密码了？</a>
-                <button class="btn btn-success btn-block loginBtn">登录</button>
-            </div>
-        </div>
-        <div class="signup-footer">
-            <div class="pull-left">
-                &copy; hAdmin
-            </div>
-        </div>
-    </div>
-</body>
-
-</html>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-param" content="_csrf">
+    <meta name="csrf-token" content="YS5URjVaUlVQfnlrTww3DDADOTxiP2tnBHYYLHYwOgUjHGEqUyokZA==">
+    <title>Login</title>
+    <link href="/assets/admin/css/bootstrap.css" rel="stylesheet">
+<link href="/assets/admin/css/site.css" rel="stylesheet"></head>
 <body>
+
+<div class="admin-login"  style="width:340px; height:auto;margin: 120px auto 0;">
+    <h1>Viu OTT CMS</h1>
+        <div class="form-group field-adminloginform-username required">
+            <label class="control-label" for="adminloginform-username">Username:</label>
+            <input type="text" id="uname" value="" class="form-control" name="Login[username]">
+
+            <div class="help-block"></div>
+        </div>        
+        <div class="form-group field-adminloginform-password required">
+            <label class="control-label" for="adminloginform-password">Password:</label>
+            <input type="password" id="upwd" class="form-control" name="Login[password]">
+
+            <div class="help-block"></div>
+        </div>  
+        <div class="form-group">
+            <button id="loginBtn" type="submit" class="btn btn-primary">Login</button>        
+        </div>
+</div><!-- admin-login -->
+
+
+<script src="/assets/admin/js/jquery.js"></script>
+<script src="/assets/admin/js/yii.js"></script>
+<script src="/assets/admin/js/yii.validation.js"></script>
+<script src="/assets/admin/js/yii.activeForm.js"></script>
+<script src="/assets/admin/js/bootstrap.js"></script>
+<script src="/assets/js/common.js"></script>
+
+<script type="text/javascript">jQuery(document).ready(function () {
+jQuery('#login-form').yiiActiveForm([{"id":"loginform-username","name":"username","container":".field-loginform-username","input":"#loginform-username","error":".help-block.help-block-error","validate":function (attribute, value, messages, deferred, $form) {yii.validation.required(value, messages, {"message":"Username cannot be blank."});}},{"id":"loginform-password","name":"password","container":".field-loginform-password","input":"#loginform-password","error":".help-block.help-block-error","validate":function (attribute, value, messages, deferred, $form) {yii.validation.required(value, messages, {"message":"Password cannot be blank."});}},{"id":"loginform-rememberme","name":"rememberMe","container":".field-loginform-rememberme","input":"#loginform-rememberme","error":".help-block.help-block-error","validate":function (attribute, value, messages, deferred, $form) {yii.validation.boolean(value, messages, {"trueValue":"1","falseValue":"0","message":"Remember Me must be either \"1\" or \"0\".","skipOnEmpty":1});}}], []);
+});</script>
+</body>
+</html>
 <script type="text/javascript">
     $(document).ready(function() {
         var verify = function(){
@@ -74,7 +69,7 @@
             })
         }) 
 
-        $('.loginBtn').click(function(){
+        $('#loginBtn').click(function(){
             verify();
             return false;
         })

@@ -24,20 +24,8 @@ class Login extends Admin_Controller {
 			$this->cResponse($res);
 		}
 		$res['code'] = 400;
-		$res['msg'] = 'Account or Password is error';
+		$res['message'] = 'Account or Password is error';
 		$this->cResponse($res);
-	}
-
-	function test2(){
-		$this->load->view('admin/test2');
-	}
-
-	function test(){
-		$this->load->view('admin/test');
-	}
-
-	function test3(){
-		$this->load->view('admin/test3');
 	}
 	/**
 	 * 登出

@@ -1,182 +1,104 @@
 
 <!DOCTYPE html>
-<html>
-
+<html lang="zh-HK">
 <head>
+<meta charset="UTF-8" />
+<title>默认关键词列表</title>
+<link href="/assets/admin/css/bootstrap.css" rel="stylesheet">
+<link href="/assets/admin/css/site.css" rel="stylesheet">
+<script src="/assets/admin/js/jquery.js"></script>
+<script src="/assets/admin/js/yii.js"></script>
+<body>
+    
+    <div class="container" style="padding: 8px; padding-bottom: 40px;width: 95%">
+        <div class="breadcrumbContainer">
+            <ul class="breadcrumb"><li class="active">默认关键词列表</li>
+</ul>       </div>
+        
+         
+<table class="table table-bordered table-hover">
+    <tr>
+        <th>
+            <label class="control-label">关键词：</label>
+        </th> 
+        <td>
+            <input type="text" id="keyword" class="form-control" name="keyword" value="">        </td>
+        <th>
+            <label class="control-label">状态：</label>
+        </th>
+        <td>
+            <select id="is_deleted" class="form-control" name="is_deleted">
+<option value="0" selected>可用</option>
+<option value="1">不可用</option>
+</select>        </td>
+    </tr>
+    <!-- 区域与语言 - BOF -->
+        <tr>
+        <th>
+            <label class="control-label">地区</label>
+        </th>
+        <td>
+            <select id="area_id" class="areaDropDownList form-control" name="area_id">
+                                                            <option value="1"  selected  >Hong Kong</option>
+                                            <option value="2"  >Singapore</option>
+                                            <option value="3"  >VuClip</option>
+                                            <option value="4"  >Thailand</option>
+                                            <option value="5"  >Philippines</option>
+                                                </select>
+        </td>
+        <th>
+            <label class="control-label">语种</label>
+        </th>
+        <td>
+            <select id="language_flag_id" class="languageDropDownList form-control" name="language_flag_id">
+                                                                                                                        <option value="1"   selected >繁體中文</option>
+                                                                                                                                                                                                                                                                                    </select>
+        </td>
+    </tr>
+    <!-- 区域与语言 - EOF -->
+<script>
+    $(function(){
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-
-    <title> - 数据表格</title>
-    <meta name="keywords" content="">
-    <meta name="description" content="">
-
-    <link rel="shortcut icon" href="favicon.ico"> <link href="/assets/admin/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
-    <link href="/assets/admin/css/font-awesome.css?v=4.4.0" rel="stylesheet">
-
-    <!-- Data Tables -->
-    <link href="/assets/admin/css/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet">
-
-    <link href="/assets/admin/css/animate.css" rel="stylesheet">
-    <link href="/assets/admin/css/style.css?v=4.1.0" rel="stylesheet">
-
-</head>
-
-<body class="gray-bg">
-    <div class="wrapper wrapper-content animated fadeInRight">
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="ibox float-e-margins">
-                    <div class="ibox-title">
-                        <h5>视频列表</h5>
-                        <div class="ibox-tools">
-                            <a class="collapse-link">
-                                <i class="fa fa-chevron-up"></i>
-                            </a>
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="table_data_tables.html#">
-                                <i class="fa fa-wrench"></i>
-                            </a>
-                            <ul class="dropdown-menu dropdown-user">
-                                <li><a href="table_data_tables.html#">选项1</a>
-                                </li>
-                                <li><a href="table_data_tables.html#">选项2</a>
-                                </li>
-                            </ul>
-                            <a class="close-link">
-                                <i class="fa fa-times"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="ibox-content">
-
-                        <table class="table table-striped table-bordered table-hover dataTables-example">
-                            <thead>
-                                <tr>
-                                    <th>渲染引擎</th>
-                                    <th>浏览器</th>
-                                    <th>平台</th>
-                                    <th>引擎版本</th>
-                                    <th>CSS等级</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                
-                                <tr class="gradeA">
-                                    <td>Misc</td>
-                                    <td>NetFront 3.4</td>
-                                    <td>Embedded devices</td>
-                                    <td class="center">-</td>
-                                    <td class="center">A</td>
-                                </tr>
-                                <tr class="gradeX">
-                                    <td>Misc</td>
-                                    <td>Dillo 0.8</td>
-                                    <td>Embedded devices</td>
-                                    <td class="center">-</td>
-                                    <td class="center">X</td>
-                                </tr>
-                                <tr class="gradeX">
-                                    <td>Misc</td>
-                                    <td>Links</td>
-                                    <td>Text only</td>
-                                    <td class="center">-</td>
-                                    <td class="center">X</td>
-                                </tr>
-                                <tr class="gradeX">
-                                    <td>Misc</td>
-                                    <td>Lynx</td>
-                                    <td>Text only</td>
-                                    <td class="center">-</td>
-                                    <td class="center">X</td>
-                                </tr>
-                                <tr class="gradeC">
-                                    <td>Misc</td>
-                                    <td>IE Mobile</td>
-                                    <td>Windows Mobile 6</td>
-                                    <td class="center">-</td>
-                                    <td class="center">C</td>
-                                </tr>
-                                <tr class="gradeC">
-                                    <td>Misc</td>
-                                    <td>PSP browser</td>
-                                    <td>PSP</td>
-                                    <td class="center">-</td>
-                                    <td class="center">C</td>
-                                </tr>
-                                <tr class="gradeU">
-                                    <td>Other browsers</td>
-                                    <td>All others</td>
-                                    <td>-</td>
-                                    <td class="center">-</td>
-                                    <td class="center">U</td>
-                                </tr>
-                            </tbody>
-                        </table>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <!-- 全局js -->
-    <script src="/assets/admin/js/jquery.min.js?v=2.1.4"></script>
-    <script src="/assets/admin/js/bootstrap.min.js?v=3.3.6"></script>
-
-
-
-    <script src="/assets/admin/js/plugins/jeditable/jquery.jeditable.js"></script>
-
-    <!-- Data Tables -->
-    <script src="/assets/admin/js/plugins/dataTables/jquery.dataTables.js"></script>
-    <script src="/assets/admin/js/plugins/dataTables/dataTables.bootstrap.js"></script>
-
-    <!-- 自定义js -->
-    <script src="/assets/admin/js/content.js?v=1.0.0"></script>
-
-
-    <!-- Page-Level Scripts -->
-    <script>
-        $(document).ready(function () {
-            $('.dataTables-example').dataTable();
-
-            /* Init DataTables */
-            var oTable = $('#editable').dataTable();
-
-            /* Apply the jEditable handlers to the table */
-            oTable.$('td').editable('../example_ajax.php', {
-                "callback": function (sValue, y) {
-                    var aPos = oTable.fnGetPosition(this);
-                    oTable.fnUpdate(sValue, aPos[0], aPos[1]);
-                },
-                "submitdata": function (value, settings) {
-                    return {
-                        "row_id": this.parentNode.getAttribute('id'),
-                        "column": oTable.fnGetPosition(this)[2]
-                    };
-                },
-
-                "width": "90%",
-                "height": "100%"
+        $('#area_id').change(function(){
+            var areaLang = [{"area_id":"1","name":"Hong Kong","country_id":"1819730","belong_area_id":"0","language_flag":[{"area_language_relation_id":"2","area_id":"1","language_flag_id":"1","is_default":"1","label":"\u7e41\u9ad4\u4e2d\u6587","mark":"zh_hk"}]},{"area_id":"2","name":"Singapore","country_id":"1880251","belong_area_id":"0","language_flag":[{"area_language_relation_id":"3","area_id":"2","language_flag_id":"2","is_default":"0","label":"\u7b80\u4f53\u4e2d\u6587","mark":"zh_cn"},{"area_language_relation_id":"4","area_id":"2","language_flag_id":"3","is_default":"1","label":"English","mark":"en"}]},{"area_id":"3","name":"VuClip","country_id":"9999999","belong_area_id":"0","language_flag":[{"area_language_relation_id":"7","area_id":"3","language_flag_id":"2","is_default":"0","label":"\u7b80\u4f53\u4e2d\u6587","mark":"zh_cn"},{"area_language_relation_id":"6","area_id":"3","language_flag_id":"3","is_default":"1","label":"English","mark":"en"}]},{"area_id":"4","name":"Thailand","country_id":"9898989","belong_area_id":"0","language_flag":[{"area_language_relation_id":"9","area_id":"4","language_flag_id":"4","is_default":"1","label":"Thai","mark":"th"}]},{"area_id":"5","name":"Philippines","country_id":"1694008","belong_area_id":"0","language_flag":[{"area_language_relation_id":"10","area_id":"5","language_flag_id":"3","is_default":"1","label":"English","mark":"en"}]}];
+            var selectedid = $(this).val();
+            var htm = '';
+            $.cookie('area_id', selectedid, { expires: 2 });
+            $.each(areaLang, function(i, val){
+                if (val.area_id == selectedid) {
+                    $.each(val.language_flag, function(k, value){
+                        htm += '<option value='+value.language_flag_id+' >'+value.label+'</option>';
+                    });
+                }
             });
 
-
+            $('#language_flag_id').html(htm);
         });
-
-        function fnClickAddRow() {
-            $('#editable').dataTable().fnAddData([
-                "Custom row",
-                "New row",
-                "New row",
-                "New row",
-                "New row"]);
-
-        }
-    </script>
-
-    
+    });
+</script>    
+    <tr>
+        <th colspan="4" class="text-center"><button type="button" id="search" class="btn btn-default">查询</button>            <button type="button" class="edit btn btn-success" data-url="/cms2/yii2/backend/web/index.php?r=default-keyword%2Fview">创建</button>
+        </th>
+    </tr>
+</table>
+<table class="table table-striped table-bordered">
+    <tr>
+        <th>ID</th>
+        <th>默认关键字</th>
+        <th>是否伪删除</th>
+        <th>地区ID</th>
+        <th>操作</th>
+    </tr>
+    <tr data-key="1"><td>1</td><td>朴寶劍</td><td>有效</td><td>1</td><td><a class="edit btn btn-primary btn-xs" href="javascript:" data-url="/cms2/yii2/backend/web/index.php?r=default-keyword%2Fview&amp;search_setting_default_keyword_id=1">修改</a>&nbsp&nbsp<a class="btn btn-danger btn-xs" href="/cms2/yii2/backend/web/index.php?r=default-keyword%2Fdelete&amp;search_setting_default_keyword_id=1&amp;is_del=1" data-confirm="注意!您正在进行删除操作!">删除</a></td></tr> 
+</table>
+<?php
+    $pageData['totalCount'] = 1000;
+    $pageData['pageSize'] = 20;
+    $pageData['showPageSize'] = 10;
+    $pageData['page'] = $_GET['page'];
+    $this->load->view('admin/page',$pageData);
+?>
+ 
     
 
 </body>

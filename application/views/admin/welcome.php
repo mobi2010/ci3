@@ -6,7 +6,7 @@
 
 
     <div class="middle-box text-center animated fadeInDown">
-        <h2 class="font-bold">Welcome to cAdmin</h2>
+        <h2 class="font-bold">Welcome to Cms</h2>
     </div>
 
 </body>
