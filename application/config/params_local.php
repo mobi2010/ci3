@@ -9,5 +9,7 @@ $localParams['cryptoSecretKey'] =  [
         ]
     ];
 
+//分类
+$localParams['categoryType'] =  [1=>'视频',2=>'音频'];
 
 return $localParams;

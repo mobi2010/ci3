@@ -1,14 +1,6 @@
-
-<!DOCTYPE html>
-<html lang="zh-HK">
-<head>
-<meta charset="UTF-8" />
-<title>默认关键词列表</title>
-<link href="/assets/admin/css/bootstrap.css" rel="stylesheet">
-<link href="/assets/admin/css/site.css" rel="stylesheet">
-<script src="/assets/admin/js/jquery.js"></script>
-<script src="/assets/admin/js/yii.js"></script>
-<body>
+<?php 
+$this->load->view('admin/header');
+?>
     
     <div class="container" style="padding: 8px; padding-bottom: 40px;width: 95%">
         <div class="breadcrumbContainer">
@@ -92,14 +84,13 @@
     <tr data-key="1"><td>1</td><td>朴寶劍</td><td>有效</td><td>1</td><td><a class="edit btn btn-primary btn-xs" href="javascript:" data-url="/cms2/yii2/backend/web/index.php?r=default-keyword%2Fview&amp;search_setting_default_keyword_id=1">修改</a>&nbsp&nbsp<a class="btn btn-danger btn-xs" href="/cms2/yii2/backend/web/index.php?r=default-keyword%2Fdelete&amp;search_setting_default_keyword_id=1&amp;is_del=1" data-confirm="注意!您正在进行删除操作!">删除</a></td></tr> 
 </table>
 <?php
-    $pageData['totalCount'] = 1000;
-    $pageData['pageSize'] = 20;
+    $pageData['totalCount'] = 400;
+    $pageData['pageSize'] = 5;
     $pageData['showPageSize'] = 10;
     $pageData['page'] = $_GET['page'];
     $this->load->view('admin/page',$pageData);
+    $this->load->view('admin/footer');
 ?>
  
     
 
-</body>
-</html>

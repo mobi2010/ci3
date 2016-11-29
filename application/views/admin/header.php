@@ -1,23 +1,17 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="renderer" content="webkit">
-
-    <title> hAdmin- 主页</title>
-
-    <meta name="keywords" content="">
-    <meta name="description" content="">
-
-    <!--[if lt IE 9]>
-    <meta http-equiv="refresh" content="0;ie.html" />
-    <![endif]-->
-
-    <link rel="shortcut icon" href="favicon.ico"> <link href="/assets/admin/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
-    <link href="/assets/admin/css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
-    <link href="/assets/admin/css/animate.css" rel="stylesheet">
-    <link href="/assets/admin/css/style.css?v=4.1.0" rel="stylesheet">
+	<meta charset="utf-8">
+	<title>CMS</title>
+	<link href="/assets/admin/css/bootstrap.css" rel="stylesheet">
+	<link href="/assets/admin/css/site.css" rel="stylesheet">
+	<script src="/assets/admin/js/jquery.js"></script>
+	<script src="/assets/js/common.js"></script>
 </head>
-
+<body>
+<script type="text/javascript">
+$(document).ready(function(){
+	$.common.init();
+}) 
+</script>    
+<div class="container" style="padding: 8px; padding-bottom: 40px;width: 95%">

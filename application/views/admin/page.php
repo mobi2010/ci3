@@ -16,15 +16,21 @@
 $html = null;
 
 $totalCount = $totalCount ? $totalCount : 0;//记录总数
+if(!$totalCount){
+	return ;
+}
 
+$pageSize = $pageSize ? $pageSize : 15; //每页显示的记录数
 $totalPage = ceil($totalCount/$pageSize);//总页数
-
 $showPageSize = $showPageSize ? $showPageSize : 10; //显示的页数
 
-var_dump($totalCount);exit;
-if($totalCount > 0 && $totalPage > 1){
-	$page = $page ? $page : 1;//当前页
-	$pageSize = $pageSize ? $pageSize : 15; //每页显示的记录数
+if($totalPage > 1){
+	//当前页
+	$page = $page ? $page : $_REQUEST['page']; 
+	$page = $page>1 ? $page : 1;
+	$page = $page > $totalPage ? $totalPage : $page;
+	
+	
 	$unset = $unset ? $unset : ['page'];//需要upset掉的参数
 	$url = $url ? $url : "?"; //链接地址
 	$url .= ci3_query_string(['page']);
@@ -61,7 +67,7 @@ if($totalCount > 0 && $totalPage > 1){
 	for($i=0;$i<$showPageSize;$i++){
 		$pi = $i+$startPage;
 		if($page == $pi){
-			$html .= '<li class="active"><a href="'.$url.'&page='.$pi.'">'.$pi.'</a></li>'
+			$html .= '<li class="active"><a href="'.$url.'&page='.$pi.'">'.$pi.'</a></li>';
 		}else{
 			$html .= '<li><a href="'.$url.'&page='.$pi.'">'.$pi.'</a></li>';
 		}
@@ -69,7 +75,7 @@ if($totalCount > 0 && $totalPage > 1){
 
 	//后页
 	if($page < $totalPage){
-		$html .= '<li class="next"><a href="'.$url.'&page='.($page-1).'">&raquo;</a></li>';
+		$html .= '<li class="next"><a href="'.$url.'&page='.($page+1).'">&raquo;</a></li>';
 	}else{
 		$html .= '<li class="next disabled"><span>&raquo;</span></li>';
 	} 
@@ -79,7 +85,7 @@ if($totalCount > 0 && $totalPage > 1){
 	}else{
 		$html .= '<li class="last"><a href="'.$url.'&page='.$totalPage.'">last</a></li>';
 	}
-
+	$html .= '<li class="first disabled"><span>'.$totalCount.'&nbsp;records</span></li>';
 	//input page
 	$html .= '<input type="text" style="height:34px;width:80px" onkeypress="if(event.keyCode==13) {location.href =\''.$url.'&page=\'+this.value;return false;}" />';
 	$html .= '</ul>';

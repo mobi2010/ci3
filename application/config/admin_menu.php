@@ -1,26 +1,31 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 return [
-		'index'=>['title'=>'首页','sub'=>
-			[
-				['title'=>'欢迎','sub'=>
-					[
-						['title'=>'欢迎','uri'=>'admin/index/welcome']
-					]
-				]
-			]
-		],
-		'content'=>['title'=>'内容管理','sub'=>
+		'index'=>['title'=>'分类管理','sub'=>
 			[
 				['title'=>'视频','sub'=>
 					[
-						['title'=>'添加','uri'=>'admin/video/add'],
-						['title'=>'列表','uri'=>'admin/video/clist'],
+						['title'=>'分类管理','uri'=>'admin/category','params'=>['type'=>1]],
 					]
 				],
 				['title'=>'音频','sub'=>
 					[
-						['title'=>'添加','uri'=>'admin/audio/add'],
-						['title'=>'列表','uri'=>'admin/audio/clist'],
+						['title'=>'分类管理','uri'=>'admin/category','params'=>['type'=>2]],
+					]
+				],
+			]
+		],
+		'content'=>['title'=>'内容管理','sub'=>
+			[
+				['title'=>'视频管理','sub'=>
+					[
+						['title'=>'添加视频','uri'=>'admin/video/edit'],
+						['title'=>'视频列表','uri'=>'admin/video'],
+					]
+				],
+				['title'=>'音频管理','sub'=>
+					[
+						['title'=>'添加音频','uri'=>'admin/audio/edit'],
+						['title'=>'音频列表','uri'=>'admin/audio'],
 					]
 				],
 			]

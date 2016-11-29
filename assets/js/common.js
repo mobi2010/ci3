@@ -195,6 +195,9 @@
     //##############功能方法##############
     $.common = {      	
     	init:function(){//全局脚本初始化
+            $('.backBtn').unbind('click').bind('click',function(){
+                window.history.back();return false;
+            })
     		// //radio
       //       $('.html-radio').bind('click',function(){
       //           var radioName = $(this).attr('data-name');
@@ -243,30 +246,8 @@
             }
             return flag;
         },
-        alert:function(data,obj){//弹出框
-            $('.dialog').remove();   
-            var obj = obj || {}; 
-            var zIndex = obj['z-index'] || 10; 
-            var ww = $(window).width();  
-            var wh = $(window).height(); 
-            var dt = $(document).scrollTop();  
-            var dl = $(document).scrollLeft();  
-            var w = (ww-200)/2+dl;
-            var h = (wh-200)/2+dt;        
-            var dialog = $('<div>');
-            var styleClass = 'dialog ';
-            var text = "";
-            if(typeof(data) == "object"){
-                text = data.msg;
-                styleClass += data['code'] == 200 ? "success" : "error";
-            }else{                
-                text = data;
-                styleClass += "alert";
-            }            
-            dialog.attr('class',styleClass); 
-            dialog.text(text);
-            dialog.css({'top':h,'left':w,'z-index':zIndex}).appendTo('body');
-        	dialog.slideDown(500,function(){setTimeout(function(){dialog.slideUp(500);},1000);});
+        alert:function(obj){//弹出框
+            alert(obj.message);
         	return false;
         },
     	submit:function(form,url,para,action){//提交表单
@@ -373,6 +354,9 @@
 		isemail:function(val){//验证邮箱
 			return /\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/.test(val);
 		},
+        history:function(){
+            window.history.back();
+        },
 		location:function(url){//重定向
 			window.location.href = url;
 			return false;

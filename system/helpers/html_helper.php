@@ -546,6 +546,7 @@ if ( ! function_exists('html_radios')){
 if ( ! function_exists('html_text')){
    function html_text($params){
   	$params['id'] = $params['id'] ? $params['id'] : $params['name'];
+  	$params['class'] = $params['class'] ? $params['class'] : 'form-control';
     $text = '<input type="text" ';
     $text .= html_join($params);
     $text .= '/>';
@@ -642,7 +643,8 @@ if ( ! function_exists('html_select')){
 	function html_select($params){
 		$select = null;
 		$options = $params['options'];
-		if(!empty($options)){			
+		if(!empty($options)){		
+			$params['class'] = $params['class'] ? $params['class'] : 'form-control';
 			$selected = $params['selected'];
 			$params['id'] = $params['id'] ? $params['id'] : $params['name'];
 			$select .= '<select ';

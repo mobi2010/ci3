@@ -13,8 +13,7 @@ class Admin_Controller extends CI_Controller
 	{
 		parent::__construct();
 		$this->uriEntity();//uri实体数据
-		//$this->load->model('Services_model', 'services');//服务
-		$this->load->library('image');
+		$this->load->model('Ci3_model', 'ci3Model');//服务
 		
 		$this->init();
 

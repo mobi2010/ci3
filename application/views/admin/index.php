@@ -1,10 +1,7 @@
 ﻿<!DOCTYPE html>
-<html lang="en-US">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="csrf-param" content="_csrf">
-    <meta name="csrf-token" content="YS5URjVaUlVQfnlrTww3DDADOTxiP2tnBHYYLHYwOgUjHGEqUyokZA==">
+    <meta charset="utf-8">
     <title>CMS</title>
     <link href="/assets/admin/css/bootstrap.css" rel="stylesheet">
     <link href="/assets/admin/css/site.css" rel="stylesheet">
@@ -17,7 +14,7 @@
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="">CMS</a>
+                <a class="navbar-brand" href="">CI3-CMS</a>
             </div>
             <div id="w0-collapse" class="collapse navbar-collapse">
                 <ul id="w1" class="navbar-nav navbar-right nav">
@@ -25,7 +22,7 @@
                         $submenuData = $menuData[$index];
                         foreach ($menuData as $key => $value) {
                             echo $key == $index ? '<li class="active">' : '<li>';
-                            echo '<a href="'.ci3_url('admin/index/index',['i'=>$key]).'">'.$value['title'].'</a></li>';
+                            echo '<a href="'.ci3_url('admin/index/index',['i'=>base64_encode($key)]).'">'.$value['title'].'</a></li>';
                         }
 
                     ?>
@@ -46,12 +43,12 @@
                     foreach ($submenuData['sub'] as $key => $value) {
                         echo '<div class="tbox">';
                         echo '<div class="hd">';
-                        echo '<h3><a>'.$value['title'].'</a></h3>';
+                        echo '<h3>'.$value['title'].'</h3>';
                         echo '</div>';
                         echo '<div class="bd">';
                         echo '<ul>';
                         foreach ($value['sub'] as $key2 => $value2) {
-                            echo '<li><a href="'.base_url($value2['uri']).'" target="mainFrame">'.$value2['title'].'</a></li>';
+                            echo '<li><a href="'.ci3_url($value2['uri'],$value2['params']).'" target="mainFrame">'.$value2['title'].'</a></li>';
                         }
                         echo '</ul>';
                         echo '</div>';
