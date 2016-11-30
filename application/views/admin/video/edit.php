@@ -26,9 +26,15 @@ $this->load->view('admin/header');
         </td>
     </tr>
     <tr >
+        <td><label>图片:</label></td>
+        <td>
+        <?=html_text(['name'=>'image_url','value'=>$dataModel['image_url']]);?>
+        </td>
+    </tr>
+    <tr >
         <td><label>视频地址:</label></td>
         <td>
-        <?=html_text(['name'=>'url','value'=>$dataModel['url']]);?>
+        <?=html_text(['name'=>'video_url','value'=>$dataModel['video_url']]);?>
         </td>
     </tr>
     <tr>

@@ -18,7 +18,7 @@ $this->load->view('admin/header');
             &nbsp;&nbsp;&nbsp;&nbsp;
             <button type="button" id="saveBtn" class="btn btn-primary">保存</button> 
         </td>
-    </tr> 
+    </tr>
 </table>
 
 <?php    
