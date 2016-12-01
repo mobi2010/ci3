@@ -14,12 +14,12 @@ $this->load->view('admin/header');
             <label class="control-label">关键词：</label>
         </td> 
         <td>
-            <input type="text" id="name" class="form-control" name="name" value="<?=$name?>">
+            <input type="text" id="title" class="form-control" name="title" value="<?=$title?>">
         </td>
     </tr>
     <tr>
         <th colspan="4" class="text-center">
-            <a href='<?=ci3_url('admin/category/edit',['type'=>$categoryType])?>' type="button" id='addBtn' class="btn btn-success">创建</a>
+            <a href='<?=ci3_url('admin/video/edit')?>' type="button" id='addBtn' class="btn btn-success">创建</a>
             &nbsp;&nbsp;&nbsp;&nbsp;
             <button type="button" id='searchBtn'class="btn btn-default">查询</button>
         </th>
@@ -29,17 +29,25 @@ $this->load->view('admin/header');
     <tr>
         <th>ID</th>
         <th>名称</th>
+        <th>图片</th>
+        <th>分类</th>
+        <th>更新时间</th>
         <th>操作</th>
     </tr>
     <?php 
         if(!empty($dataModel)){
             foreach ($dataModel as $key => $value) {
-                echo "<tr><td>{$value['id']}</td>";
-                echo "<td>{$value['name']}</td>";
-                echo "<td>";
-                echo '<a class="edit btn btn-primary btn-xs" href="'.ci3_url('admin/category/edit',['id'=>$value['id']]).'" >修改</a>';
-                echo str_repeat('&nbsp;',4);
-                echo '<button class="deleteBtn btn btn-danger btn-xs" data-url="'.ci3_url('admin/category/delete',['id'=>$value['id']]).'" >删除</button></td></tr>';
+                $tdBody = html_a(['href'=>ci3_url('admin/video/edit',['id'=>$value['id']]),'text'=>'修改','class'=>'edit btn btn-primary btn-xs']);
+                $tdBody .= str_repeat('&nbsp;',4);
+                $tdBody .= html_a(['text'=>'删除','data-value'=>$value['id'],'class'=>'deleteBtn btn btn-danger btn-xs']);
+                
+                $td = html_td(['body'=>$value['id']]);
+                $td .= html_td(['body'=>$value['title']]);
+                $td .= html_td(['body'=>html_img(['src'=>$value['image_url']])]);
+                $td .= html_td(['body'=>$categoryData[$value['category_id']]]);
+                $td .= html_td(['body'=>date("Y-m-d H:i:s",$value['update_time'])]);
+                $td .= html_td(['body'=>$tdBody]);
+                echo html_tr(['body'=>$td]);
             }
         }
     ?>
@@ -52,18 +60,18 @@ $this->load->view('admin/header');
 <script type="text/javascript">
 $(document).ready(function() {
     $('#searchBtn').click(function(){
-        var name = $('#name').val();
-        var url = "<?=ci3_url('admin/category/index',['type'=>$categoryType])?>&name="+name;
+        var title = $('#title').val();
+        var url = "<?=ci3_url('admin/video/index')?>?title="+title;
         $.common.location(url);
         return false;
     })
 
     $('.deleteBtn').click(function(){
         if(!confirm('确定删除?')){return false;}
-        var url = $(this).attr('data-url');
-        $.get(url,function(dt){
+        var id = $(this).attr('data-value');
+        $.post("<?=ci3_url('admin/video/delete')?>",{'id':id},function(dt){
             $.common.alert(dt);
-            $.common.location("<?=ci3_url('admin/category/index',['type'=>$categoryType])?>");
+            $.common.location("<?=ci3_url('admin/video/index',['type'=>$videoType])?>");
         })
     })
 })

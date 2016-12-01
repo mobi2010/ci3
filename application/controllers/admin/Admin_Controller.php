@@ -12,12 +12,13 @@ class Admin_Controller extends CI_Controller
 	function  __construct($params = array())
 	{
 		parent::__construct();
-		$this->uriEntity();//uri实体数据
-		$this->load->model('Ci3_model', 'ci3Model');//服务
 		
 		$this->init();
-
+		$this->uriEntity();//uri实体数据
 		$this->auth();//验证
+
+		$this->load->model('Ci3_model', 'ci3Model');//服务
+		$this->load->library('image');
 	}
 	/**
 	 * [验证]

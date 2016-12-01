@@ -554,6 +554,21 @@ if ( ! function_exists('html_text')){
   }
 }
 /**
+* [file description]
+* @param  [type] $params [description]
+* @return [type]         [description]
+*/
+if ( ! function_exists('html_file')){
+   function html_file($params){
+  	$params['id'] = $params['id'] ? $params['id'] : $params['name'];
+  	$params['class'] = $params['class'] ? $params['class'] : 'form-control';
+    $text = '<input type="file" ';
+    $text .= html_join($params);
+    $text .= '/>';
+  	return $text; 
+  }
+}
+/**
 * [text description]
 * @param  [type] $params [description]
 * @return [type]         [description]
@@ -591,6 +606,7 @@ if ( ! function_exists('html_textarea')){
 	function html_textarea($params){
 		$value = $params['value'];
 		$params['id'] = $params['id'] ? $params['id'] : $params['name'];
+		$params['class'] = $params['class'] ? $params['class'] : 'form-control';
 		$text = '<textarea ';
 		$text .= html_join($params,array('value'));
 		$text .= '>';

@@ -4,7 +4,11 @@ require('Admin_Controller.php');
  * 分类
  */
 class Category extends Admin_Controller {
-	public $table = 'category';
+	function __construct($params = array())
+	{
+		parent::__construct();
+		$this->load->model('Category_model', 'categoryModel');//服务
+	}
 	/**
 	 * [index]
 	 * @return [type] [description]
@@ -13,7 +17,6 @@ class Category extends Admin_Controller {
 	{	
 		$data['categoryType'] = $categoryType = (int)$_GET['type'];
 		$data['name'] = $name = $_GET['name'] ? $_GET['name'] : null;
-		$params['table'] = $this->table;
 
 		$where[] = 'type='.$categoryType;
 		if($name){
@@ -21,8 +24,8 @@ class Category extends Admin_Controller {
 		}
 
 		$params['where'] = implode(' and ',$where);
-		$data['totalCount'] = $this->ci3Model->dataFetchCount($params);
-		$data['dataModel'] = $this->ci3Model->dataFetchArray($params);
+		$getList = $this->categoryModel->getList($params);
+		$data += $getList;
 		$this->load->view('admin/category/list',$data);
 	}
 
@@ -34,9 +37,8 @@ class Category extends Admin_Controller {
 		$data['categoryType'] = $categoryType = (int)$_GET['type'];
 		$id = (int)$_GET['id'];
 		if($id){
-			$params['table'] = $this->table;
-			$params['where'] = $id;
-			$data['dataModel'] = $this->ci3Model->dataFetchRow($params);
+			$data['dataModel'] = $this->categoryModel->getRow($id);
+			$data['categoryType'] = $data['dataModel'] ? $data['dataModel']['type'] : $categoryType;
 		}
 
 		$this->load->view('admin/category/edit',$data);
@@ -49,11 +51,10 @@ class Category extends Admin_Controller {
 	public function save(){
 		$name = $_POST['name'] ? addslashes($_POST['name']) : "";
 		if($name){
+			$data['id'] = (int)$_POST['id'];
 			$data['name'] = $name;
 			$data['type'] = (int)$_POST['type'];
-			$params['data'] = $data;
-			$params['table'] = $this->table;
-			$res = $this->ci3Model->dataInsert($params);
+			$res = $this->categoryModel->save($data);
 			$this->cResponse();
 		}
 		$this->cResponse(['code'=>'10000','message'=>'data error']);
@@ -65,9 +66,7 @@ class Category extends Admin_Controller {
 	 */
 	public function delete(){
 		$id = (int)$_GET['id'];
-		$params['table'] = $this->table;
-		$params['id'] = $id;
-		$res = $this->ci3Model->dataDelete($params);
+		$res = $this->categoryModel->delete(['where'=>$id]);
 		if($res){
 			$this->cResponse();
 		}else{

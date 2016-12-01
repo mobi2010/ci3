@@ -338,8 +338,8 @@ if ( ! function_exists('unixtime_to_date'))
 /**
  * [协议处理] 
  */
-if ( ! function_exists('mobi_string_protocol')){
-	function mobi_string_protocol($url, $protocol='http'){
+if ( ! function_exists('ci3_string_protocol')){
+	function ci3_string_protocol($url, $protocol='http'){
 		if($url && !strstr($url,$protocol)){
 			$url = $protocol.'://'.$url;
 		}
@@ -349,8 +349,8 @@ if ( ! function_exists('mobi_string_protocol')){
 /**
  * [字符串过滤] 
  */
-if ( ! function_exists('mobi_string_filter')){
-	function mobi_string_filter($string){
+if ( ! function_exists('ci3_string_filter')){
+	function ci3_string_filter($string){
 		if($string){
 			$string = addslashes(trim(strip_tags(strval($string))));
 		}
@@ -364,8 +364,8 @@ if ( ! function_exists('mobi_string_filter')){
  * @param  [type] $expire 	[过期时间-秒]
  * @return [type]        [description]
  */
-if ( ! function_exists('mobi_setcookie')){
-	function mobi_setcookie($key,$value,$expire,$path='/',$domain=''){	
+if ( ! function_exists('ci3_setcookie')){
+	function ci3_setcookie($key,$value,$expire,$path='/',$domain=''){	
 		$expire = time()+$expire;	
 		if(!$domain){
 			$domain = $_SERVER['HTTP_HOST'];
@@ -387,16 +387,16 @@ if ( ! function_exists('mobi_setcookie')){
  * @param  [type] $key [description]
  * @return [type]      [description]
  */
-if ( ! function_exists('mobi_delcookie')){
-	function mobi_delcookie($data){
+if ( ! function_exists('ci3_delcookie')){
+	function ci3_delcookie($data){
 		$value = '';
 		$time = time()-3600;
 		if(is_array($data)){
 			foreach ($data as $key) {
-				mobi_setcookie($key,$value,$time);
+				ci3_setcookie($key,$value,$time);
 			}
 		}else{
-			mobi_setcookie($data,$value,$time);
+			ci3_setcookie($data,$value,$time);
 		}		
 	}
 }
@@ -405,8 +405,8 @@ if ( ! function_exists('mobi_delcookie')){
  * @param  [type] $key [description]
  * @return [type]      [description]
  */
-if ( ! function_exists('mobi_getcookie')){
-	function mobi_getcookie($key){
+if ( ! function_exists('ci3_getcookie')){
+	function ci3_getcookie($key){
 		return $_COOKIE[$key];
 	}
 }
@@ -416,8 +416,8 @@ if ( ! function_exists('mobi_getcookie')){
  * @param  [type] $key [description]
  * @return [type]      [description]
  */
-if ( ! function_exists('mobi_ismobile')){
-	function mobi_ismobile($str){
+if ( ! function_exists('ci3_ismobile')){
+	function ci3_ismobile($str){
 		return preg_match("/^1[3|4|5|8][0-9]\d{8}$/i", $str);
 	}
 }
@@ -427,8 +427,8 @@ if ( ! function_exists('mobi_ismobile')){
  * @param  [type] $key [description]
  * @return [type]      [description]
  */
-if ( ! function_exists('mobi_isemail')){
-	function mobi_isemail($str){
+if ( ! function_exists('ci3_isemail')){
+	function ci3_isemail($str){
 		return preg_match("/\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/i", $str);
 	}
 }
@@ -437,8 +437,8 @@ if ( ! function_exists('mobi_isemail')){
  * @param  [type] $key [description]
  * @return [type]      [description]
  */
-if ( ! function_exists('mobi_time')){
-	function mobi_time($ptime){
+if ( ! function_exists('ci3_time')){
+	function ci3_time($ptime){
 		$dtime = time();
 		$ctime = $dtime-$ptime;
 		$res = "";
@@ -459,8 +459,8 @@ if ( ! function_exists('mobi_time')){
  * @param  [type] $key [description]
  * @return [type]      [description]
  */
-if ( ! function_exists('mobi_content_images')){
-	function mobi_content_images($content){
+if ( ! function_exists('ci3_content_images')){
+	function ci3_content_images($content){
 		if($content){
 			preg_match_all('/http:\/\/pinery.b0.upaiyun.com(.*?)"/isu', $content, $matches);
 			$images = str_replace('"', "", implode('|', $matches[0]));
@@ -476,8 +476,8 @@ if ( ! function_exists('mobi_content_images')){
  * @param  [type] $key [description]
  * @return [type]      [description]
  */
-if ( ! function_exists('mobi_gb2u')){
-	function mobi_gb2u($str){
+if ( ! function_exists('ci3_gb2u')){
+	function ci3_gb2u($str){
 		return iconv("GBK", "UTF-8", $str); 
 	}
 }
@@ -486,8 +486,8 @@ if ( ! function_exists('mobi_gb2u')){
  * @param  [type] $key [description]
  * @return [type]      [description]
  */	
-if ( ! function_exists('mobi_u2gb')){
-	function mobi_u2gb($str){
+if ( ! function_exists('ci3_u2gb')){
+	function ci3_u2gb($str){
 		return iconv("UTF-8", "GBK", $str); 
 	}
 }	

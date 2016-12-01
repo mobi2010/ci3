@@ -7,8 +7,9 @@
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Image {
-	public $uploadImagePath = './tmp';//上传图片地址
-	public $cropImagePath = './tmp';//切图图片地址
+	public $uploadImagePath = './assets/images/original';//上传图片地址
+	public $cropImagePath = './assets/images/crop';//切图图片地址
+	public $thumbImagePath = './assets/images/thumb';//缩略图地址
 	public $fileExt;//允许的文件格式
 	public $fileSize;//字节，默认10M
 	public function __construct()
@@ -100,7 +101,7 @@ class Image {
 		$fileExt = empty($params['fileExt']) ? $this->fileExt : $params['fileExt'];//允许的文件格式		
 	    $fileExtStr = $this->fileExt($uploadFileName); //文件.jpg 后缀
 	    if(!in_array($fileExtStr, $fileExt)){
-	    	$res['msg'] = $fileExt.'文件不合法!'.$fileExtStr;
+	    	$res['msg'] = '文件不合法!'.$fileExtStr;
 			return $res;
 	    }
 	    //文件路径
@@ -139,7 +140,7 @@ class Image {
 	 */
 	function thumb($params=array()){
 		$res['error'] = 1;
-		$createImagePath = $this->filePath($this->cropImagePath); //存放图片路径
+		$createImagePath = $this->filePath($this->thumbImagePath); //存放图片路径
 		$sourceImage = $this->imageFilePath($params['file']);//源图片
 		$width = intval($params['width']);//宽
 		$height = intval($params['height']);//高		

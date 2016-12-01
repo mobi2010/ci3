@@ -33,7 +33,7 @@ $this->load->view('admin/header');
     </tr>
     <?php 
         foreach ($dataModel as $key => $value) {
-            echo "<tr><td>{$value['id']}</td>";
+            echo "<tr><td>".(++$key)."</td>";
             echo "<td>{$value['name']}</td>";
             echo "<td>";
             echo '<a class="edit btn btn-primary btn-xs" href="'.ci3_url('admin/category/edit',['id'=>$value['id']]).'" >修改</a>';

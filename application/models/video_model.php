@@ -1,14 +1,17 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Category_model extends MY_Model {		
-	public $table = 'category';	
+class Video_model extends MY_Model {		
+	public $table = 'video';	
 	public $params;
 	function __construct()
 	{
 		parent::__construct();
 		$this->params['table'] = $this->table;
 	}
-
+	function getRow($id){
+		$this->params['where'] = (int)$id;
+		return $this->dataFetchRow($this->params);
+	}
 	function getList($params=[]){
 		$this->params = $this->params + $params;
 		$res['totalCount'] = $this->dataFetchCount($this->params);
@@ -16,20 +19,8 @@ class Category_model extends MY_Model {
 		return $res;
 	}
 
-	function getData($type=0){
-		if($type){
-			$this->params['where']='type='.$type;
-		}
-		$this->params['skey']='id';
-		$this->params['sval']='name';
-		return $this->dataFetchArray($this->params);
-	}
-	function getRow($id){
-		$this->params['where'] = (int)$id;
-		return $this->dataFetchRow($this->params);
-	}
-
 	function save($params=[]){
+		$params['update_time'] = time(); 
 		$this->params['data'] = $params;
 		$id = $params['id'];unset($params['id']);
 		if($id){
