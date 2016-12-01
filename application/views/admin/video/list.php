@@ -32,13 +32,15 @@ $this->load->view('admin/header');
         <th>操作</th>
     </tr>
     <?php 
-        foreach ($dataModel as $key => $value) {
-            echo "<tr><td>{$value['id']}</td>";
-            echo "<td>{$value['name']}</td>";
-            echo "<td>";
-            echo '<a class="edit btn btn-primary btn-xs" href="'.ci3_url('admin/category/edit',['id'=>$value['id']]).'" >修改</a>';
-            echo str_repeat('&nbsp;',4);
-            echo '<button class="deleteBtn btn btn-danger btn-xs" data-url="'.ci3_url('admin/category/delete',['id'=>$value['id']]).'" >删除</button></td></tr>';
+        if(!empty($dataModel)){
+            foreach ($dataModel as $key => $value) {
+                echo "<tr><td>{$value['id']}</td>";
+                echo "<td>{$value['name']}</td>";
+                echo "<td>";
+                echo '<a class="edit btn btn-primary btn-xs" href="'.ci3_url('admin/category/edit',['id'=>$value['id']]).'" >修改</a>';
+                echo str_repeat('&nbsp;',4);
+                echo '<button class="deleteBtn btn btn-danger btn-xs" data-url="'.ci3_url('admin/category/delete',['id'=>$value['id']]).'" >删除</button></td></tr>';
+            }
         }
     ?>
 </table>
