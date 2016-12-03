@@ -44,9 +44,9 @@ class MY_Model extends CI_Model {
     function dataFetchCount($param=array()){     
         $table = $param['table'];   
         $where = $this->dataWhere($param['where']);        
-        $this->sqls[] = $sql = "select count(*) as sum from {$table} $where limit 1";
+        $this->sqls[] = $sql = "select count(*) as total from {$table} $where limit 1";
         $res = $this->db->query($sql)->row_array();
-        return intval($res['sum']);
+        return intval($res['total']);
     }
 
     /**

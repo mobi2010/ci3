@@ -17,8 +17,8 @@ class Login extends Admin_Controller {
 	 * @return [type] [description]
 	 */
 	public function checked(){
-		$uname = mobi_string_filter($_POST['uname']);
-		$upwd = mobi_string_filter($_POST['upwd']);		
+		$uname = ci3_string_filter($_POST['uname']);
+		$upwd = ci3_string_filter($_POST['upwd']);		
 		if($uname == 'admin' && $upwd == 'admin@ci3'){			
 			$_SESSION['logined'] = true;
 			$this->cResponse($res);
