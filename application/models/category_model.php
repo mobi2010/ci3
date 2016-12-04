@@ -12,6 +12,7 @@ class Category_model extends MY_Model {
 	function getList($params=[]){
 		$this->params = $this->params + $params;
 		$res['totalCount'] = $this->dataFetchCount($this->params);
+		$this->params['order'] = "sort_id asc";
 		$res['dataModel'] = $this->dataFetchArray($this->params);
 		return $res;
 	}
@@ -39,6 +40,12 @@ class Category_model extends MY_Model {
 			$id = $this->dataInsert($this->params);
 		}
 		return $id;
+	}
+
+	function update($params){
+		$this->params['where'] = $params['where'];
+		$this->params['data'] = $params['data'];
+		return $this->dataUpdate($this->params);
 	}
 	function delete($params=[]){
 		$this->params['where'] = $params['where'];

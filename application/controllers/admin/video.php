@@ -45,7 +45,7 @@ class Video extends Admin_Controller {
 	public function save(){
 		if($_FILES['Filedata']['tmp_name']){
 			$uploadImg = $this->image->upload();
-			$thumbImg = $this->image->thumb(array('file'=>$uploadImg['filePath'],'width'=>150,'height'=>120,'bgcolor'=>'white'));
+			$thumbImg = $this->image->thumb(array('file'=>$uploadImg['filePath'],'width'=>272,'height'=>159,'bgcolor'=>'white'));
 			$image_url = $thumbImg['filePath'];
 		}else{
 			$image_url = $_POST['image_url'];
@@ -53,7 +53,7 @@ class Video extends Admin_Controller {
 
 		$data['id'] = (int)$_POST['id'];
 		$data['title'] = ci3_string_filter($_POST['title']);
-		$data['content'] = ci3_string_filter($_POST['content']);
+		$data['abstract'] = ci3_string_filter($_POST['abstract']);
 		$data['image_url'] = addslashes($image_url);
 		$data['video_url'] = ci3_string_filter($_POST['video_url']);
 		$data['category_id'] = intval($_POST['category_id']);

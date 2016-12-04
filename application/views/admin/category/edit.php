@@ -16,6 +16,14 @@ $this->load->view('admin/header');
         ?>
         </td>
     </tr>
+    <tr >
+        <td><label>排序:</label></td>
+        <td>
+        <?php 
+            echo html_text(['value'=>$dataModel['sort_id'],'name'=>'sort_id']);
+        ?>
+        </td>
+    </tr>
     <tr>
         <td align="center" colspan="2">
             <button type="button" class="btn btn-default backBtn">返回</button> 

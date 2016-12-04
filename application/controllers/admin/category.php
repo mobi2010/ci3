@@ -54,6 +54,7 @@ class Category extends Admin_Controller {
 			$data['id'] = (int)$_POST['id'];
 			$data['name'] = $name;
 			$data['type'] = (int)$_POST['type'];
+			$data['sort_id'] = (int)$_POST['sort_id'];
 			$res = $this->categoryModel->save($data);
 			$this->cResponse();
 		}
@@ -72,5 +73,27 @@ class Category extends Admin_Controller {
 		}else{
 			$this->cResponse(['code'=>'10000','message'=>'data error']);
 		}
+	}
+	/**
+	 * [batch description]
+	 * @return [type] [description]
+	 */
+	public function batch(){
+		$type = $_GET['type'];
+		if(!empty($_POST['ckbOption'])){
+			switch ($type) {
+				case 'update':
+					foreach ($_POST['ckbOption'] as $key => $value) {
+						$sort_id = $_POST['sort_id'][$value];
+						$this->categoryModel->update(['data'=>['sort_id'=>$sort_id],'where'=>$value]);
+					}
+					break;
+				
+				default:
+					# code...
+					break;
+			}
+		}
+		$this->cResponse();
 	}
 }	

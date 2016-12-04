@@ -464,6 +464,21 @@ var cover = {
         return false;
     }
 }
+
+//全选
+var checkAll = {
+    init: function(obj){//初始化
+        var allBtn = obj['allBtn'];
+        var oneName = obj['oneName'];
+        $('#'+allBtn).off('click').on('click',function(){
+            $("input[name='"+oneName+"[]']").prop("checked",$(this).prop('checked'));
+        })  
+        $("input[name='"+oneName+"[]']").off('click').on('click',function(){
+            $('#'+allBtn).prop("checked",false);
+        })  
+    }   
+} 
+
     
 //loading组件
 var loading = {

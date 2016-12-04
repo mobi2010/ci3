@@ -15,9 +15,9 @@ $this->load->view('admin/header');
             </td>
         </tr>
         <tr >
-            <td><label>描述:</label></td>
+            <td><label>摘要:</label></td>
             <td>
-            <?=html_textarea(['name'=>'content','value'=>$dataModel['content'],"rows"=>"5"]);?>
+            <?=html_textarea(['name'=>'abstract','value'=>$dataModel['abstract'],"rows"=>"5"]);?>
             </td>
         </tr>
         <tr >
@@ -67,8 +67,8 @@ $(document).ready(function(){
             $.common.alert({'message':'标题不能为空'});
             return false;
         }
-        var content = $('#content').val();
-        if(!content){
+        var abstract = $('#abstract').val();
+        if(!abstract){
             $.common.alert({'message':'描述不能为空'});
             return false;
         }

@@ -14,7 +14,7 @@
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="">CI3-CMS</a>
+                <a class="navbar-brand" href="">Edu-CMS</a>
             </div>
             <div id="w0-collapse" class="collapse navbar-collapse">
                 <ul id="w1" class="navbar-nav navbar-right nav">
