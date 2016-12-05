@@ -18,14 +18,10 @@ class MY_Controller extends CI_Controller
 	function __construct($params = array())
 	{
 		parent::__construct();
-		$this->load->model('Pinery_model', 'pineryModel');//
-		$this->load->model('Member_model', 'member');//会员
-		$this->load->model('Property_model', 'property');//房产
-		$this->load->model('Car_model', 'car');//车辆
-		$this->load->model('Market_model', 'market');//集市
-		$this->load->model('Services_model', 'services');//服务
-		$this->load->library('gycrypt');
-		$this->load->library('image');
+
+		$this->load->model('Ci3_model', 'ci3Model');//服务
+
+
 		$this->uriEntity();//uri实体数据		
 
 		$this->init();//初始数据
@@ -38,7 +34,7 @@ class MY_Controller extends CI_Controller
 	*/
 	protected function init(){
 		//用户信息
-		$auth = mobi_getcookie('auth');
+		$auth = ci3_getcookie('auth');
 		if($auth && $userId = intval($this->gycrypt->decrypt($auth))){			
 			$this->userEntity = $this->member->info($userId);
 			$this->userId = empty($this->userEntity) ? 0 : $userId;
@@ -47,7 +43,7 @@ class MY_Controller extends CI_Controller
 		}
 
 		//导航
-		$this->initData['dataMenu'] = require(APPPATH.'/config/data_menu.php');
+		//$this->initData['dataMenu'] = require(APPPATH.'/config/data_menu.php');
 
 		$this->load->vars('initData',$this->initData);//映射到模板
 		return $this->initData;
@@ -94,10 +90,10 @@ class MY_Controller extends CI_Controller
 	 * [输出]
 	 * @return [type] [description]
 	 */
-    protected function printer($params=array(), $exit = true, $contentType='json'){
+    protected function cResponse($params=array(), $exit = true, $contentType='json'){
     	$params['data'] = empty($params['data']) ? "" : $params['data'];
-    	$params['code'] = $params['code'] ? $params['code'] : 200;
-    	$params['msg'] = $params['msg'] ? $params['msg'] : 'success';
+    	$params['code'] = $params['code'] ? $params['code'] : 0;
+    	$params['message'] = $params['message'] ? $params['message'] : 'success';
     	switch ($contentType) {
     		case 'json':
     			header('Content-type: application/json;charset=utf-8');

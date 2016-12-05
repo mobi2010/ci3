@@ -12,8 +12,8 @@ class Aes {
 
     //private标记的构造方法
     public function __construct(){
-        $localParams = require_once(APPPATH.'/config/params_local.php');
-        self::$cryptoSecretKey = $localParams['cryptoSecretKey'];
+        $adminParams = require_once(APPPATH.'/config/params_local.php');
+        self::$cryptoSecretKey = $adminParams['cryptoSecretKey'];
     }
     public static function genIvParameter() {   
         return mcrypt_create_iv(mcrypt_get_iv_size(MCRYPT_RIJNDAEL_128,MCRYPT_MODE_CBC), MCRYPT_RAND);   

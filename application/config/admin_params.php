@@ -1,5 +1,19 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-return [
+
+// 加密算法的秘钥配置
+$adminParams['cryptoSecretKey'] =  [
+        'normal' => [
+            'key'    => 'KEYAES0123456789',
+            // 初始化向量
+            'iv'     => '192.168.1.102.ci'//16位
+        ]
+    ];
+
+//分类
+$adminParams['categoryType'] =  [1=>'视频',2=>'音频'];
+
+//菜单
+$adminParams['menuData'] = [
 		'index'=>['title'=>'分类管理','sub'=>
 			[
 				['title'=>'视频','sub'=>
@@ -31,3 +45,5 @@ return [
 			]
 		]
 	];
+
+return $adminParams;

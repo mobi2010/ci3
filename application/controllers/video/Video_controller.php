@@ -1,12 +1,8 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 header( 'Content-type: text/html;charset=utf-8' );
 session_start();
-/**
- * 后台控制器
- *
- * @author by zsc
- */
-class Admin_Controller extends CI_Controller
+
+class Video_Controller extends MY_Controller
 {
 	public $uriEntity = null;//uri 实体
 	function  __construct($params = array())
@@ -15,9 +11,10 @@ class Admin_Controller extends CI_Controller
 		
 		$this->init();
 		$this->uriEntity();//uri实体数据
-		$this->auth();//验证
 
-		$this->load->model('Ci3_model', 'ci3Model');//服务
+		
+		$this->load->model('Video_model', 'videoModel');//服务
+
 		$this->load->library('image');
 	}
 	/**
@@ -36,7 +33,7 @@ class Admin_Controller extends CI_Controller
 	protected function init(){
 		
 		//配置参数
-		$this->initData['adminParams'] = $dataCity = require(APPPATH.'/config/admin_params.php');
+		$this->initData['videoParams'] = $dataCity = require(APPPATH.'/config/video_params.php');
 
 		$this->load->vars('initData',$this->initData);//映射到模板
 

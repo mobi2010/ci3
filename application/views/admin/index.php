@@ -19,12 +19,12 @@
             <div id="w0-collapse" class="collapse navbar-collapse">
                 <ul id="w1" class="navbar-nav navbar-right nav">
                     <?php 
+                        $menuData = $initData['adminParams']['menuData'];
                         $submenuData = $menuData[$index];
                         foreach ($menuData as $key => $value) {
                             echo $key == $index ? '<li class="active">' : '<li>';
                             echo '<a href="'.ci3_url('admin/index/index',['i'=>base64_encode($key)]).'">'.$value['title'].'</a></li>';
                         }
-
                     ?>
                     <li>
                         <form action="<?=base_url('admin/login/logout')?>" method="post">
