@@ -8,7 +8,7 @@ class MY_Model extends CI_Model {
     {
         parent::__construct();         
         $this->load->database();
-        $this->load->driver('cache');
+        //$this->load->driver('cache');
     }     
 
     /**
