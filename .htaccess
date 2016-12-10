@@ -1,11 +1,10 @@
 RewriteEngine on
-RewriteCond %{REQUEST_FILENAME} !-f        
+
+RewriteCond %{REQUEST_FILENAME} !-f    
+RewriteRule ^video-(.*?)\.html$ index.php?d=video&c=detail&m=index&id=$1 [L]
+
+RewriteCond %{REQUEST_FILENAME} !-f    
 RewriteRule ^(.*)$ index.php/$1 [L]
-
-RewriteCond %{REQUEST_URI} \.html$
-#RewriteRule ^(.*?)$ /index.php?/video/detail/index/id/1 [R]
-RewriteRule ^/video/detail-(.*?)\.html$ /video/detail?id=$2 [R]
-
 
 php_value upload_max_filesize 10M  
 php_value post_max_size 20M  

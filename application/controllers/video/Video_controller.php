@@ -22,9 +22,9 @@ class Video_Controller extends MY_Controller
 	 * @return [type] [description]
 	 */
 	protected function auth(){
-		if ($this->uriEntity['class'] != 'login' && !$_SESSION['logined']) {
-			redirect('admin/login');
-		}
+		// if ($this->uriEntity['class'] != 'login' && !$_SESSION['logined']) {
+		// 	redirect('admin/login');
+		// }
 	}
 	/**
 	* [初始数据]

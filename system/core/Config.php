@@ -263,7 +263,7 @@ class CI_Config {
 		}
 		else
 		{
-			return $this->slash_item('base_url').$this->item('index_page').'?'.$this->_uri_string($uri);
+			return $this->slash_item('base_url').$this->item('index_page').$this->_uri_string($uri);
 		}
 	}
 

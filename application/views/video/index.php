@@ -45,7 +45,7 @@ $this->load->view('/video/header',$data);
                     <div class="moduleContent clearfix" data-loadmore="">
     <?php 
         foreach ($dataModel as $key => $value) {
-            $detail_url = ci3_url('video/detail',['id'=>$value['id']]); 
+            $detail_url = "/video-{$value['id']}.html";//ci3_url('video/detail',['id'=>$value['id']]); 
             echo <<<ETO
 <div class="item fl">
         <a href="{$detail_url}" target="_blank" class="pic" data-fadein="icon">
