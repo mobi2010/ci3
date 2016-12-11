@@ -33,18 +33,8 @@ class MY_Controller extends CI_Controller
 	* @return [type] [description]
 	*/
 	protected function init(){
-		//用户信息
-		$auth = ci3_getcookie('auth');
-		if($auth && $userId = intval($this->gycrypt->decrypt($auth))){			
-			$this->userEntity = $this->member->info($userId);
-			$this->userId = empty($this->userEntity) ? 0 : $userId;
-			$this->load->vars('userEntity',$this->userEntity);//映射到模板
-			$cityId = $this->userEntity['city_id'];
-		}
-
-		//导航
-		//$this->initData['dataMenu'] = require(APPPATH.'/config/data_menu.php');
-
+		//配置参数
+		$this->initData['commonParams'] = require(APPPATH.'/config/common_params.php');
 		$this->load->vars('initData',$this->initData);//映射到模板
 		return $this->initData;
 	}

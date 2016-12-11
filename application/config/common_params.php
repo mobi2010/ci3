@@ -19,7 +19,6 @@ $localParams['menuData'] = [
 		['title'=>'音频','uri'=>'audio'],
 		['title'=>'文章','uri'=>'article'],
 	];
-
 //导航索引
-$localParams['navIndex'] = 'video';
+$localParams['navIndex'] = 'index';
 return $localParams;

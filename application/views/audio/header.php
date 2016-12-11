@@ -1,5 +1,5 @@
 <?php 
-    $commonParams = $initData['commonParams'];
+    $audioParams = $initData['audioParams'];
 ?>
 <!DOCTYPE html>
 <html>
@@ -14,12 +14,7 @@
     <link rel="stylesheet" type="text/css" href="/assets/video/css/common.css">
     <link rel="stylesheet" type="text/css" href="/assets/video/css/video.css" />
     <link rel="stylesheet" href="/assets/video/css/video1.1.css">
-<style>
-    .pagination{font-size: 18px;text-align: center;line-height: 44px;margin: 50px 0 0;}
-    .pagination>a{display: inline-block;width: 42px;height: 42px;background: #ddd;color: #444;}
-    .pagination>a.current,.pagination>a:hover{background: #65c4aa;color: #fff;}
-    .pagination>a.prev,.pagination>a.next{width: 3em;padding: 0 4px;}
-</style>
+
 </head>
 <body>
 <div class="header-warp">
@@ -27,9 +22,9 @@
         <h1><a href="">育儿大师 - 宝宝有问题，专家来帮您</a></h1>
         <ul>
             <?php 
-            foreach ($commonParams['menuData'] as $key => $value) {
+            foreach ($audioParams['menuData'] as $key => $value) {
                 $menuParams = ['href'=>ci3_url($value['uri']),'text'=>$value['title']];
-                $menuParams['class'] = strpos($commonParams['navIndex'],$value['uri']) === false ? '' : 'current';
+                $menuParams['class'] = strpos($audioParams['navIndex'],$value['uri']) === false ? '' : 'current';
                 echo '<li>'.html_a($menuParams).'</li>';
             }
             ?>

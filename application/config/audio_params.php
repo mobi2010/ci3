@@ -21,5 +21,5 @@ $localParams['menuData'] = [
 	];
 
 //导航索引
-$localParams['navIndex'] = 'video';
+$localParams['navIndex'] = 'audio';
 return $localParams;

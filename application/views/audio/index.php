@@ -1,5 +1,5 @@
 <?php 
-$this->load->view('/video/header',$data);
+$this->load->view('/audio/header',$data);
 ?>
     
     
@@ -11,7 +11,7 @@ $this->load->view('/video/header',$data);
                         <?php 
 
                             foreach ($categoryData as $key => $value) {
-                                $menuParams = ['href'=>ci3_url('video/index',['cid'=>$key,'sort'=>$sort]),'text'=>$value];
+                                $menuParams = ['href'=>ci3_url('audio/index',['cid'=>$key,'sort'=>$sort]),'text'=>$value];
                                 $menuParams['class'] = $key == $cid ? 'cur' : "";
                                 echo html_a($menuParams);
                             }
@@ -28,7 +28,7 @@ $this->load->view('/video/header',$data);
                             <?php 
                                 $sortParams = ['最新上线','最受欢迎'];
                                 foreach ($sortParams as $key => $value) {
-                                    echo html_a(['href'=>ci3_url('video/index',['cid'=>$cid,'sort'=>$key]),'text'=>$value]);
+                                    echo html_a(['href'=>ci3_url('audio/index',['cid'=>$cid,'sort'=>$key]),'text'=>$value]);
                                 }
                             ?>
                         </div>
@@ -45,7 +45,7 @@ $this->load->view('/video/header',$data);
                     <div class="moduleContent clearfix" data-loadmore="">
     <?php 
         foreach ($dataModel as $key => $value) {
-            $detail_url = "/video-{$value['id']}.html";//ci3_url('video/detail',['id'=>$value['id']]); 
+            $detail_url = "/audio-{$value['id']}.html";//ci3_url('audio/detail',['id'=>$value['id']]); 
             echo <<<ETO
 <div class="item fl">
         <a href="{$detail_url}" target="_blank" class="pic" data-fadein="icon">
@@ -80,7 +80,7 @@ ETO;
                         
                         <?php
                             $pageData['totalCount'] = $totalCount;
-                            $this->load->view('video/page',$pageData);
+                            $this->load->view('audio/page',$pageData);
                         ?>
                 </div>
             </div>
@@ -89,5 +89,5 @@ ETO;
 </div>
 
 <?php 
-    $this->load->view('/video/footer',$data);
+    $this->load->view('/audio/footer',$data);
 ?>

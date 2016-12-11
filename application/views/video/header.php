@@ -29,7 +29,7 @@
             <?php 
             foreach ($videoParams['menuData'] as $key => $value) {
                 $menuParams = ['href'=>ci3_url($value['uri']),'text'=>$value['title']];
-                $menuParams['class'] = strpos($value['uri'],$uriEntity['method']) ? 'current' : "";
+                $menuParams['class'] = strpos($videoParams['navIndex'],$value['uri']) === false ? '' : 'current';
                 echo '<li>'.html_a($menuParams).'</li>';
             }
             ?>

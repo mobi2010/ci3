@@ -2,7 +2,7 @@
 header( 'Content-type: text/html;charset=utf-8' );
 session_start();
 
-class Video_Controller extends MY_Controller
+class Audio_Controller extends MY_Controller
 {
 	public $uriEntity = null;//uri 实体
 	function  __construct($params = array())
@@ -13,7 +13,7 @@ class Video_Controller extends MY_Controller
 		$this->uriEntity();//uri实体数据
 
 		
-		$this->load->model('Video_model', 'videoModel');//服务
+		$this->load->model('Audio_model', 'audioModel');//服务
 
 		$this->load->library('image');
 	}
@@ -32,7 +32,7 @@ class Video_Controller extends MY_Controller
 	*/
 	protected function init(){
 		//配置参数
-		$this->initData['videoParams'] = require(APPPATH.'/config/video_params.php');
+		$this->initData['audioParams'] = require(APPPATH.'/config/audio_params.php');
 		$this->load->vars('initData',$this->initData);//映射到模板
 		return $this->initData;
 	}
