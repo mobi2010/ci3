@@ -148,12 +148,17 @@ $this->load->view('/audio/header',$data);
                 <div class="coverBottom"></div>
             </div>
             <div class="player" data-player="http://mamafm.resource.3uol.com/20161205/636165486160326357.mp3?e=1481530044&amp;token=rDBDYPw36ixTYG84GMf3g1nTE-S7n3DNIljpe65f:p_nnTxClZYSGYD777ZrFaNxxR7g=" data-autoplay="true">
-                <div class="playCtr clearfix fl">
+            <audio controls="controls" autoplay="autoplay" loop="loop">
+              <source src="http://mamafm.resource.3uol.com/20161205/636165486160326357.mp3?e=1481530044&amp;token=rDBDYPw36ixTYG84GMf3g1nTE-S7n3DNIljpe65f:p_nnTxClZYSGYD777ZrFaNxxR7g=" type="audio/mpeg">
+            Your browser does not support the audio tag.
+            </audio>
+
+                <!-- <div class="playCtr clearfix fl">
                         <a href="http://fm.3uol.com/3205.html" class="prev fl"></a>
                     <a href="javascript:void(0)" class="pause stopBtn fl" style="display: none;" onclick="stopsong(this,0)"></a>
                     <a href="javascript:void(0)" class="play playBtn fl" onclick="playsong(this,0)" style="display: block;"></a>
                         <a href="http://fm.3uol.com/3206.html" class="next fl"></a>
-                </div>
+                </div> -->
             </div>
             <div class="zitips" style="color:#e86792; font-size:14px; display:none;">注：如无法正常播放，请检查是否已安装Quicktime软件，或更换浏览器。</div>
         </div>
