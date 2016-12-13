@@ -26,8 +26,8 @@ class Uploadify extends MY_Controller {
 		if(!$file){
 			$this->cResponse($res);
 		}	
-		$ypyImg = $this->image->ypyUpload(array('file'=>$file));
-		$res['url'] = $ypyImg['filePath']."!m01";
+		//$ypyImg = $this->image->ypyUpload(array('file'=>$file));
+		$res['url'] = $file;//$ypyImg['filePath']."!m01";
 		echo json_encode($res);
 		//$this->cResponse($res);
 	}

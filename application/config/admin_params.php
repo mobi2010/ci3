@@ -26,6 +26,11 @@ $adminParams['menuData'] = [
 						['title'=>'分类管理','uri'=>'admin/category','params'=>['type'=>2]],
 					]
 				],
+				['title'=>'文章','sub'=>
+					[
+						['title'=>'文章管理','uri'=>'admin/category','params'=>['type'=>3]],
+					]
+				],
 			]
 		],
 		'content'=>['title'=>'内容管理','sub'=>
@@ -40,6 +45,12 @@ $adminParams['menuData'] = [
 					[
 						['title'=>'添加音频','uri'=>'admin/audio/edit'],
 						['title'=>'音频列表','uri'=>'admin/audio'],
+					]
+				],
+				['title'=>'文章管理','sub'=>
+					[
+						['title'=>'添加文章','uri'=>'admin/article/edit'],
+						['title'=>'文章列表','uri'=>'admin/article'],
 					]
 				],
 			]

@@ -1,33 +1,30 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-date_default_timezone_set('PRC'); 
-header("Pragma:no-cache");//不缓存页面
-header('Content-type: text/html;charset=utf-8');//设置页面编码
-// header("Last-Modified:".date('r'));
-// header("Expires:".date('r'));
-// header("ETag:".time());
-// header("Cache-Control: no-cache, must-revalidate"); 
-/**
- * 控制器
- */
-class MY_Controller extends CI_Controller
-{	
-	public $uriEntity;//uri 实体
-	public $initData;//初始数据
-	public $userId;
-	public $userEntity;//user 实体
-	function __construct($params = array())
+header( 'Content-type: text/html;charset=utf-8' );
+session_start();
+
+class Article_Controller extends MY_Controller
+{
+	public $uriEntity = null;//uri 实体
+	function  __construct($params = array())
 	{
 		parent::__construct();
+		
+		$this->init();
+		$this->uriEntity();//uri实体数据
 
-		$this->load->model('Ci3_model', 'ci3Model');//服务
+		
+		$this->load->model('article_model', 'articleModel');//服务
 
 		$this->load->library('image');
-
-		$this->uriEntity();//uri实体数据		
-
-		$this->init();//初始数据
-
-		$params['auth'] !== false && $this->auth();//验证
+	}
+	/**
+	 * [验证]
+	 * @return [type] [description]
+	 */
+	protected function auth(){
+		// if ($this->uriEntity['class'] != 'login' && !$_SESSION['logined']) {
+		// 	redirect('admin/login');
+		// }
 	}
 	/**
 	* [初始数据]
@@ -35,32 +32,9 @@ class MY_Controller extends CI_Controller
 	*/
 	protected function init(){
 		//配置参数
-		$this->initData['commonParams'] = require(APPPATH.'/config/common_params.php');
+		$this->initData['articleParams'] = require(APPPATH.'/config/article_params.php');
 		$this->load->vars('initData',$this->initData);//映射到模板
 		return $this->initData;
-	}
-	/**
-	 * [验证]
-	 * @return [type] [description]
-	 */
-	protected function auth($type = null){
-		switch ($type) {
-			case 'register':			
-				
-				break;			
-			default:
-				if((!$this->userId || $this->userEntity['status'] != 0) && 
-					$this->uriEntity['class'] != "login"){
-					redirect('login');		
-				}
-				if($this->userEntity['step'] < 9 && 
-					!($this->uriEntity['class'] == "account" && 
-						in_array($this->uriEntity['method'], array("info","infoSave")))){
-					redirect('member/account/info');
-				}
-				break;
-		}
-		return true;
 	}
 	/**
 	 * [uri实体数据整理]
@@ -101,14 +75,4 @@ class MY_Controller extends CI_Controller
     	}
     	$exit && exit; 
     }
-    /**
-     * [会员信息]
-     * @return [type] [description]
-     */
-    protected function memberInfo($userid,$source=0){
-    	if($source == 0 && $userid == $this->userId){
-    		return $this->userEntity;
-    	}
-    	return $this->member->info($userid,$source);
-    }
-}
+}	
