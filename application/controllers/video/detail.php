@@ -10,21 +10,13 @@ class Detail extends Video_Controller {
 	}
 	public function index()
 	{	
-		$data['categoryData'] = ["所有类别"]+$this->categoryModel->getData(1);
-		$data['cid'] = $cid = (int)$_GET['cid']; 
-		$data['sort'] = $sort = (int)$_GET['sort']; 
-
-		$where = [];
-		if($cid){
-			$where[] = "category_id={$cid}";
+		$id = (int)$_GET['id'];
+		if($id){
+			$dataModel = $this->videoModel->getRow($id);
+			$dataModel['views'] = $dataModel['views'] + 1;
+			$this->videoModel->save(['id'=>$id,'views'=>$dataModel['views']]);
+			$data['dataModel'] = $dataModel;
 		}
-		$where = empty($where) ? null : implode(' and ',$where);
-		$params['where'] = $where;
-		$params['order'] = $sort == 1 ? "views desc" : "update_time desc";
-
-		$getList = $this->videoModel->getList($params);
-		$data += $getList;
-
 		$this->load->view('video/detail',$data);
 	}	
 	

@@ -31,8 +31,8 @@ class Category_model extends MY_Model {
 	}
 
 	function save($params=[]){
-		$this->params['data'] = $params;
 		$id = $params['id'];unset($params['id']);
+		$this->params['data'] = $params;
 		if($id){
 			$this->params['where'] = $id;
 			$this->dataUpdate($this->params);
