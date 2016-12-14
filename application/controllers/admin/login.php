@@ -20,7 +20,8 @@ class Login extends Admin_Controller {
 		$uname = ci3_string_filter($_POST['uname']);
 		$upwd = ci3_string_filter($_POST['upwd']);		
 		if($uname == 'admin' && $upwd == 'admin@ci3'){			
-			$_SESSION['logined'] = true;
+			//$_SESSION['logined'] = true;
+			ci3_setcookie('logined',time(),7*24*3600);
 			$this->cResponse($res);
 		}
 		$res['code'] = 400;
@@ -32,7 +33,8 @@ class Login extends Admin_Controller {
 	 * @return [type] [description]
 	 */
 	public function logout(){
-		unset($_SESSION['logined']);
+		//unset($_SESSION['logined']);
+		ci3_delcookie('logined');
 		redirect('admin/login');
 	}
 }
